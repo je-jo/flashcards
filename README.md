@@ -16,7 +16,7 @@ This is a learning project from Turing School Module 2. The spec can be found [h
 
 ## Preview of App
 
-![]()
+![](./turing-flashcards.gif)
 
 ## Technologies used
 

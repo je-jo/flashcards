@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { takeTurn, endRound } = require('./round');
+const { takeTurn, checkScore } = require('./round');
 
 const genList = (round) => {
   let card = round.currentCard;
@@ -36,7 +36,7 @@ async function main(round) {
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
   if (!round.currentCard) {
-    endRound(round);
+    checkScore(round);
   } else {
     main(round);
   }
