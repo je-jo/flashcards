@@ -32,7 +32,7 @@ This is a learning project from Turing School Module 2. The spec can be found [h
 
 ## Optional Extension
 
-- [ ] Add functionality so that a score of less than 90% will require the user to go through the entire dataset again.
+- [x] Add functionality so that a score of less than 90% will require the user to go through the entire dataset again.
 
 
 
