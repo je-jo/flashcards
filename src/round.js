@@ -1,6 +1,7 @@
 const { evaluateGuess } = require("./card");
 const { countCards } = require("./deck");
 
+
 const round = (deck) => {
     return {
         deck: deck,
@@ -21,19 +22,28 @@ const takeTurn = (guess, round) => {
 }
 
 const calculatePercentCorrect = (round) => {
-    const correctAnswers = countCards(round.deck) - round.incorrectGuesses.length
-    const percentage = ((correctAnswers / countCards(round.deck) * 100).toFixed(2));
+    const totalAnswers = countCards(round.deck)
+    const totalIncorrect = round.incorrectGuesses.length;
+    const totalCorrect = totalAnswers - totalIncorrect;
+    const percentage = Number(((totalCorrect / totalAnswers) * 100).toFixed(2))
     return percentage;
 }
 
-const endRound = (round) => {
-    console.log(`** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly!`)
-    return `** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly!`
+const checkScore = (round) => {
+    if (calculatePercentCorrect(round) < 90) {
+        console.log(`** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly! You need to try again.`)
+        const { start } = require('./game'); // declared here, otherwise node circular dependency
+        start();
+        return `** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly! You need to try again.`
+    } else {
+        console.log(`** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly!`)
+        return `** Round over! ** You answered ${calculatePercentCorrect(round)}% of the questions correctly!`
+    }
 }
 
 module.exports = {
     round,
     takeTurn,
     calculatePercentCorrect,
-    endRound
+    checkScore
 }

@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const { createCard } = require('../src/card');
 const { createDeck } = require("../src/deck");
-const { round, takeTurn, calculatePercentCorrect, endRound } = require("../src/round.js");
+const { round, takeTurn, calculatePercentCorrect, checkScore } = require("../src/round.js");
 
 let card1, card2, card3, deck, myRound;
 
@@ -45,12 +45,12 @@ describe("takeTurn", function () {
 describe("calculatePercentCorrect", function () {
     it("should return a percentage of correct answers", function () {
         const percentCorrect = calculatePercentCorrect(myRound);
-        expect(percentCorrect).to.equal("66.67")
+        expect(percentCorrect).to.equal(66.67)
     })
 })
-describe("endRound", function () {
+describe("checkScore", function () {
     it("should return a message with percentage", function () {
-        const message = endRound(myRound)
-        expect(message).to.equal("** Round over! ** You answered 66.67% of the questions correctly!")
+        const message = checkScore(myRound)
+        expect(message).to.equal("** Round over! ** You answered 66.67% of the questions correctly! You need to try again.")
     })
 })

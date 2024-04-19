@@ -4,11 +4,11 @@ const { round } = require('./round')
 const prototypeQuestions = data.prototypeData;
 const util = require('./util');
 
-function start() {
+const start = () => {
   const deck = createDeck(prototypeQuestions);
   const newRound = round(deck);
   printMessage(deck);
-  printQuestion(newRound)
+  printQuestion(newRound);
 }
 
 function printMessage(deck) {
@@ -20,4 +20,8 @@ function printQuestion(newRound) {
   util.main(newRound);
 }
 
-module.exports = { start, printMessage, printQuestion };
+module.exports = { 
+  start, 
+  printMessage, 
+  printQuestion 
+};
